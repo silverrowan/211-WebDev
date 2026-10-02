@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<head>
+    <title>In Class Example</title>
+    <!-- production version -->
+    <!-- 
+    <script type="importmap">
+        {
+            "imports": {
+                "react": "https://esm.sh/react@19/?dev",
+                "react-dom/client": "https://esm.sh/react-dom@19/client/?dev"
+            }
+        } 
+    </script> -->
+    <script type="importmap">
+    {
+        "imports": {
+            "react/jsx-runtime": "https://esm.sh/react@19/jsx-runtime/?dev",
+            "react-dom/client": "https://esm.sh/react-dom@19/client/?dev"
+        }
+    }
+    </script>
+    <script type = "module" src="https://esm.sh/tsx"></script> 
+</head>
+<body>
+    <div id="root"></div>
+    <!-- <script type="module"> -->
+    <!-- <script type="text/jsx"> -->
+    <script type="text/babel">
+        // not needed with JSX - built in
+        // import { createElement } from 'react';
+        import { createRoot } from 'react-dom/client';
+        
+        // const p = createElement('p', null, 'Mutating the DOM!');
+        // in JSX
+        const p = <p>Mutating the DOM!</p>;
+        // is not *actually* html - but will be turned int html.
+        // Browsers CANNOT interpret JSX.
+        // must convert back to javaScript - 'transpiling' 
+        
+        // tie together DOM tag with React root and render
+        // const root = createRoot(document.getElementById('root'));
+        // JSX
+
+        // const HelloWorld = () => {
+        //     return (
+        // alternative:
+        const HelloWorld = () => (
+                <>
+                    <h1>Hello</h1>
+                    <h2>World!</h2>
+                </>
+            );
+
+        const ICS211 = props => (
+            <>
+                <h1>ICS 211 Web Apps</h1>
+                <p id={props.id}> You did a lab on {props.topic} this semester!</p>
+            </>
+        );
+
+        // createRoot(document.getElementById('root')).render( <HelloWorld /> );
+        // should have only one 'create root'
+        // createRoot(document.getElementById('root')).render( <ICS211 /> );
+        // createRoot(document.getElementById('root')).render( 
+        //     <>
+        //         <ICS211 id="0" topic="javaScript Review" /> 
+        //         <ICS211 id="1" topic="SOP, AJAX, XSS and SQLi" /> 
+        //         <ICS211 id="2" topic="Creating a Static HTML Page by Manipulating the DOM" /> 
+        //     </>
+        // );
+
+        import { createroot } from 'react-dom/client'
+
+        const Header = () => <h1>ICS 211 Web Apps</h1>;
+
+        const App = () => {
+            const labs = [
+                { id: 0, topic: 'javaScript Review'},
+                { id: 1, topic: "SOP, AJAX, XSS and SQLi" },
+                { id: 2, topic: "Creating a Static HTML Page by Manipulating the DOM" }      
+            ];
+
+            return (
+                <>
+                    <Header />
+                    {labs.map( lab => 
+                        <Lab key = {lab.id} id={lab.id} topic={lab.topic} />
+                    )}
+                </>
+            )
+        }
+
+        createRoot( document.getElementById('root')).render(<App />);
+
+        const labs = ({id, topic}) => (
+            <p id={id}>
+                You did a lab on {topic} this semester.
+            </p>
+        );
+    </script>
+    <!-- vs -->
+    <!--manual manip DOM <script>
+        let p_node = document.createElement("p");
+        p_node.textContent = "Mutating the DOM!" ;
+        document.body.appendChild(p_node);
+    </script> -->    
+</body>
+</html>

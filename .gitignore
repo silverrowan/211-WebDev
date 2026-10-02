@@ -1,0 +1,21 @@
+*.zip
+*.env
+.vscode/
+dist/, build/ (Frontend and backend build outputs)
+target/
+node_modules/ (Node.js)
+vendor/ (PHP, Composer)
+.venv/, venv/
+.DS_Store (macOS)
+Thumbs.db (Windows)
+*.log, npm-debug.log*, yarn-debug.log*, yarn-error.log* (Logs from various tools)
+*.tmp, *.bak (Temporary and backup files)
+.mypy_cache/, __pycache__/ (Python caches)
+.ipynb_checkpoints/ (Jupyter Notebook checkpoints)
+.env, .env.local, .env.development, .env.production
+secrets.json, config.json (Sensitive configuration files)
+*.sqlite, *.sqlite3, *.db (SQLite database files)
+dump.rdb (Redis database dump)
+coverage/, *.lcov (Code coverage reports)
+.tox/, .pytest_cache/ (Python testing files)
+ics211-lab1/

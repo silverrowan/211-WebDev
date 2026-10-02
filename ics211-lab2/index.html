@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ICS 211 Lab 2 Task 3 by Mariah Malczewska</title>
+    <script type="importmap">
+      {
+        "imports": {
+          "react/jsx-runtime": "https://esm.sh/react@19/jsx-runtime/?dev",
+          "react-dom/client": "https://esm.sh/react-dom@19/client/?dev"
+        }
+      }
+    </script>
+    <script type="module" src="https://esm.sh/tsx"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+        import { createRoot } from 'react-dom/client';
+        const my2DArray = [
+            [ "Ice Wine Black Tea", "https://www.stevesteas.com/products/icewine?srsltid=AU7gw4WR41a3iKpNEnTy3BjOd4OMCO-OVqVY8LVDSPES4VFlUiqfxMWt" ],
+            [ "Rose Congou Tea", "https://pippinstea.com/products/china-rose-congou-loose-leaf-tea?_pos=5&_sid=1051e1a8e&_ss=r" ],
+            [ "Masala Chai Black Tea", "https://pippinstea.com/products/masala-chai-loose-leaf-tea" ]
+        ];      
+        
+        // change null to your parent React element
+        createRoot(document.getElementById('root')).render(
+            <>
+                <h1>Favorite Teas</h1>
+                <h3>by Mariah Malczewska</h3>
+                <ol>
+                    <li>{my2DArray[0][0]}:  <a href={my2DArray[0][1]}>{my2DArray[0][1]}</a></li>
+                    <li>{my2DArray[1][0]}:  <a href={my2DArray[1][1]}>{my2DArray[1][1]}</a></li>
+                    <li>{my2DArray[2][0]}:  <a href={my2DArray[2][1]}>{my2DArray[2][1]}</a></li>
+                </ol>
+            </>
+        );
+    </script>
+  </body>
+</html>

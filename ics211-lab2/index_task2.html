@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ICS 211 Lab 2 Task 1 and 2 by Mariah Malczewska</title>
+</head>
+<body>
+    <!-- 
+    Page Title - Favorite xyzs <h1>
+    by mariah <h3>
+
+        use <ol><li> ... :  <a>
+    1. item 1:  link
+    2. item 2:  link
+    3. item 3:  link
+    -->
+
+
+    <script>
+    // let bodyNode = document.getElementsByTagName("body")
+        const my2DArray = [
+            [ "Ice Wine Black Tea", "https://www.stevesteas.com/products/icewine?srsltid=AU7gw4WR41a3iKpNEnTy3BjOd4OMCO-OVqVY8LVDSPES4VFlUiqfxMWt" ],
+            [ "Rose Congou Tea", "https://pippinstea.com/products/china-rose-congou-loose-leaf-tea?_pos=5&_sid=1051e1a8e&_ss=r" ],
+            [ "Masala Chai Black Tea", "https://pippinstea.com/products/masala-chai-loose-leaf-tea" ]
+        ];
+
+        const titleH1 = document.createElement("h1");
+        titleH1.textContent = "Favorite Teas"
+        const bylineH3 = document.createElement("h3");
+        bylineH3.textContent = "by Mariah Malczewska"
+        const favoritesList = document.createElement("ol");
+
+        my2DArray.forEach( item => {
+            const favA = document.createElement('a')
+            favA.textContent = favA.href = item[1]
+
+            const favoriteItem = document.createElement("li");
+            favoriteItem.textContent = `${item[0]}: `
+            // favoriteItem.textContent = item[0]
+            // favoriteItem.insertAdjacentHTML('beforeend', ":&nbsp;&nbsp;")
+            favoriteItem.appendChild( favA )
+            favoritesList.appendChild( favoriteItem );        
+        })
+        
+        document.body.appendChild( titleH1 );
+        document.body.appendChild( bylineH3 );
+        document.body.appendChild( favoritesList );
+    </script>
+</body>
+</html>

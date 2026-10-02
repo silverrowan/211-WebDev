@@ -1,0 +1,15 @@
+baseURL: https://example.org/
+locale: en-us
+title: ICS211 Lab Demo Site
+theme: Mainroad
+disqusShortname: ics211_lab4_mm
+
+Params:
+  subtitle: ICS 211 Lab 4 Hugo Site
+  copyright: Mariah
+  sidebar:
+    home: right
+    list: left
+    Widgets:
+      - taglist
+      - recent
