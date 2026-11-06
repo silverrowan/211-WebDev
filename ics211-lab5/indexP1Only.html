@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>ICS 211 Lab 2 Task 3 by Mariah Malczewska</title>
+  <script type="importmap">
+    {
+      "imports": {
+        "react/jsx-runtime": "https://esm.sh/react@19/jsx-runtime/?dev",
+        "react-dom/client": "https://esm.sh/react-dom@19/client/?dev"
+      }
+    }
+  </script>
+  <script type="module" src="https://esm.sh/tsx"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+      import styled from 'https://esm.sh/styled-components@6/?dev';
+      import { createRoot } from 'react-dom/client';   
+        
+        const Header = () => (
+            <>
+                <StyledTitle>Favorite Teas</StyledTitle>
+                <h3>by Mariah Malczewska</h3>  
+            </>
+        )
+
+        const FavoriteItem = ({key, itemName, itemLink, color}) => (
+            <StyledListItem color={color}><b>{itemName}:</b>  <a href={itemLink}>{itemLink}</a></StyledListItem>
+        )
+
+        const FavoriteItemList = () => {
+          const teaArray = [
+              { id:0, itemName: "Ice Wine Black Tea", itemLink: "https://www.stevesteas.com/products/icewine", color: 'blue'},
+              { id:1, itemName: "Rose Congou Tea", itemLink: "https://pippinstea.com/products/china-rose-congou-loose-leaf-tea", color: 'green' },
+              { id:2, itemName: "Masala Chai Black Tea", itemLink: "https://pippinstea.com/products/masala-chai-loose-leaf-tea", color: '#8f71e3' }
+          ];   
+
+          return <ol>
+                    {teaArray.map( tea => 
+                        <FavoriteItem key={tea.id} itemName={tea.itemName} itemLink={tea.itemLink} color={tea.color}/>
+                    )}
+                </ol>
+        }
+
+        const App = ({className}) => (
+          <div className={className}>
+            <Header />
+            <FavoriteItemList />          
+          </div>
+        )
+
+        const StyledApp = styled(App)`
+          width: 650px;
+          background-color: #a3d4ff;
+          border: 3px solid;
+          padding: 25px;
+          padding-top: 0px;
+          margin-top: 25px;
+          margin-left: 25px;
+          `;
+
+        const StyledTitle = styled.h1`
+            color: navy;
+            font-size: 30pt;
+            margin-bottom: -15px;
+        `
+        const StyledListItem = styled.li`
+            background-color: #ffffff88;
+            margin: 10px;
+            padding: 5px;
+            border-radius:5px;
+            font-family: sans-serif;
+            list-style: none;
+            color: ${props=>props.color};
+        `;
+
+        // change null to your parent React element
+        createRoot(document.getElementById('root')).render( <StyledApp /> );
+    </script>
+</body>
+</html>

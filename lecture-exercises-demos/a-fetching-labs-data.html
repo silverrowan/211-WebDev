@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>ICS 211 Fetching Data with Axios</title>
+  <!-- Axios Library -->
+  <script
+      src="https://unpkg.com/axios/dist/axios.min.js">
+  </script>
+</head>
+<body>
+  <script>
+      
+    // 1. ES8 Async/Await Version
+    (async () => {
+      try {
+        const response =
+          await axios.get('http://10.21.74.98:3000/labs');
+        console.log(response);
+      } catch (error) {
+        console.log('API Error: ' + error);
+      }
+    })();
+    
+    // 2. ES6 Promise Syntax Version
+    axios.get('http://10.21.74.98:3000/labs')
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log('API Error: ' + error);
+      });
+  </script>
+</body>
+
+</html>

@@ -2,7 +2,7 @@ baseURL: https://example.org/
 locale: en-us
 title: ICS211 Lab Demo Site
 theme: Mainroad
-disqusShortname: ics211_lab4_mm
+disqusShortname: ics211-lab4-mm
 
 Params:
   subtitle: ICS 211 Lab 4 Hugo Site

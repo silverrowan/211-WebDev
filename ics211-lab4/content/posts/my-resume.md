@@ -12,4 +12,4 @@ tags:
 ---
 # Resume
 ## (not actually)
-You can get my resume [here](LetterFormatSample.pdf)
+**You can get my resume [here](fakeume.pdf)**

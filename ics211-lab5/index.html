@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>ICS 211 Lab 5 by Mariah Malczewska</title>
+  <script type="importmap">
+    {
+      "imports": {
+        "react/jsx-runtime": "https://esm.sh/react@19/jsx-runtime/?dev",
+        "react-dom/client": "https://esm.sh/react-dom@19/client/?dev"
+      }
+    }
+  </script>
+  <script type="module" src="https://esm.sh/tsx"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+      import styled from 'https://esm.sh/styled-components@6/?dev';
+      import { createRoot } from 'react-dom/client';
+      import { useState } from 'https://esm.sh/react@19/?dev'; 
+
+        // ------Title------
+        const Header = () => (
+            <>
+                <StyledTitle>Favorite Teas</StyledTitle>
+                <h3>by Mariah Malczewska</h3>  
+            </>
+        )
+
+        // ------Form------
+        // use components: form, fieldset, legend, input
+        const FavoriteItemForm = ({ addTea }) => {
+
+          const handleSubmit = event => {
+            console.log(name, link) 
+            event.preventDefault();
+            addTea( name, link );
+          }
+          //pretending its one value for now
+          // const[ name, setTea ] = useState( '' );
+          const[ name, setName ] = useState( '' );
+          const[ link, setLink ] = useState( '' );
+          // wrapper for FormLabeledInput updates
+          // const addNewTea = event => {
+          //     event.preventDefault();
+          //     addTea( name, link );
+          //     setName('');
+          //     setLink('');
+              // setTeaArray();
+          // }
+          return (
+               // <input type="url" name="LinkIn" id="addTeaLink" style={{flex: 1}} value={link} onChange={ event => setLink( event.target.value ) } />                
+            <>
+              <form onSubmit={handleSubmit}>
+                <fieldset style={{ display: 'flex', flexDirection: "column", gap: '2em'}}>
+                  <StyledLegend style={{ marginBottom: '0.75em'}}>Add a Tea:</StyledLegend>
+
+                    <div style={{ display: 'flex', flexDirection: "row", gap: "0.25em", width: '60%' }}>
+                      <StyledLabel htmlFor="addTeaName">Tea:</StyledLabel> {/* note, no id for label... "[var]str" but w curlies wasn't working */}
+                      <input name="TeaIn" id="addTeaName" style={{flex: 1}} value={name} onChange={ event => setName( event.target.value )} />                
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: "row", gap: "0.25em"}}>
+                      <StyledLabel htmlFor="addTeaLink">Link:</StyledLabel> {/* note, no id for label... "[var]str" but w curlies wasn't working */}
+                      <input type="text" name="LinkIn" id="addTeaLink" style={{flex: 1}} value={link} onChange={ event => setLink( event.target.value ) } />                
+                    </div>
+
+                    <div style={{ display:'flex', justifyContent:'center'}}>
+                    <StyledButton type="submit">Add Tea</StyledButton>
+                  </div>
+                </fieldset>
+              </form>
+            </>
+          );
+        };
+
+        // const FormLabeledInput = ({ id, label, width }) => {
+        //   const [ value, setValue ] = useState( '' );
+
+        // const addTea = event => {
+        //   setValue( event.target.value )
+        // }
+
+          // const setValue = ('value') => ( value=value + new );
+
+          // const addTea = ({ value, setValue }) => {}
+
+        //   return (
+        //     <div style={{ display: 'flex', flexDirection: "row", gap: "0.25em", width }}>
+        //       <StyledLabel htmlFor={id}>{label}:</StyledLabel> {/* note, no id for label... "[var]str" but w curlies wasn't working */}
+        //       <input name={label} id={id} value={value} onChange={addTea} style={{flex: 1}} />                
+        //     </div>
+        //   );
+        // };    
+
+        // ------List Items------
+        const FavoriteItem = ({id, itemName, itemLink, color}) => (
+            <StyledListItem key={id} color={color}><b>{itemName}:</b>  <a href={itemLink}>{itemLink}</a></StyledListItem>
+        )
+
+        const FavoriteItemList = ({ teas }) => {
+          return <ol style={{ listStyle: 'none', margin: 0, padding: 0 }}>
+                    {teas.map( tea => 
+                        <FavoriteItem key={tea.id} itemName={tea.itemName} itemLink={tea.itemLink} color={tea.color}/>
+                    )}
+                </ol>
+        }
+
+        // ------Entire Application------
+        const App = ({className}) => {
+          const [ teas, setTeas ] = useState([
+            { id:0, itemName: "Ice Wine Black Tea", itemLink: "https://www.stevesteas.com/products/icewine", color: 'blue'},
+            { id:1, itemName: "Rose Congou Tea", itemLink: "https://pippinstea.com/products/china-rose-congou-loose-leaf-tea", color: 'green' },
+            { id:2, itemName: "Masala Chai Black Tea", itemLink: "https://pippinstea.com/products/masala-chai-loose-leaf-tea", color: '#8f71e3' }
+          ])
+
+          let idCount = teas.length
+          
+          const addTea = ( teaName, tealink ) => {
+            // event.preventDefault()
+            console.log("addTea received:", teaName, tealink);
+            const newTeaObj = {
+                id: idCount++,
+                itemName: teaName,
+                itemLink: tealink,
+                color: getRandomColor()
+            } 
+
+            console.log( newTeaObj )
+            setTeas( teas.concat(newTeaObj) );
+            console.log( teas )
+          }
+
+          const getRandomColor = () => {
+            // yes its chat-gpt code
+            // Blue page background has a hue around 207°
+            // Generate colors across a complementary palette.
+            const palette = [
+              [100, 145], // Green
+              [145, 175], // Mint
+              [180, 207], // Teal / blue
+              [207, 230], // Blue
+              [255, 285], // Purple / lavender
+              [290, 320], // Magenta
+              [330, 355], // Rose / pink
+              [5, 25],    // Coral / peach
+              [35, 55]    // Gold
+            ];
+
+            const range = palette[Math.floor(Math.random() * palette.length)];
+
+            const hue = Math.floor(
+              Math.random() * (range[1] - range[0]) + range[0]
+            );
+
+            const saturation = Math.floor(Math.random() * 21) + 45;
+            const lightness = Math.floor(Math.random() * 16) + 48;
+
+            return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+          };          
+          
+          // const setTeaArray = teaObj => teaArray.push( addTea )
+
+          return (
+            <div className={className}>
+              <Header />
+              <FavoriteItemForm addTea={addTea} />
+              <FavoriteItemList teas={teas}/>          
+            </div>
+          )
+        }
+
+        // ------STYLING------
+        const StyledApp = styled(App)`
+          width: 650px;
+          background-color: #a3d4ff;
+          border: 3px solid;
+          padding: 25px;
+          padding-top: 0px;
+          margin-top: 25px;
+          margin-left: 25px;
+          `;
+
+        const StyledTitle = styled.h1`
+            color: navy;
+            font-size: 30pt;
+            margin-bottom: -15px;
+        `
+        const StyledLegend = styled.legend`
+            color: navy;
+            font-weight: 900;
+            padding: 0.5em; 
+        `
+        const StyledLabel = styled.label`
+            font-weight: 900;
+            margin: 0.1em; 
+        `
+        const StyledButton = styled.button`
+            color: white;
+            padding: 0.8em;
+            font-size: 10pt;
+            border: 1px solid rgba(0,0,0, 0.1);
+            border-radius: 0.2em;
+            background: #58a linear-gradient(hsla(0, 0%, 100%, 0.2), transparent);
+            box-shadow: 0 0.05em 0.25em rgba(0,0,0, 0.5);
+        `
+        const StyledListItem = styled.li`
+            background-color: #ffffff88;
+            margin: 10px 2px;
+            padding: 5px;
+            border-radius:5px;
+            font-family: sans-serif;
+            list-style: none;
+            color: ${props=>props.color};
+        `;
+
+        // change null to your parent React element
+        createRoot(document.getElementById('root')).render( <StyledApp /> );
+    </script>
+</body>
+</html>

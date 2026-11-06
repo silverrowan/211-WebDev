@@ -2,51 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/tags/css/</loc>
+    <loc>https://example.org/tags/css/</loc>
     <lastmod>2026-10-02T19:08:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/html/</loc>
+    <loc>https://example.org/tags/html/</loc>
     <lastmod>2026-10-02T19:08:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://example.org/</loc>
     <lastmod>2026-10-02T19:08:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/java/</loc>
+    <loc>https://example.org/tags/java/</loc>
     <lastmod>2026-10-02T19:08:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/javascript/</loc>
+    <loc>https://example.org/tags/javascript/</loc>
     <lastmod>2026-10-02T19:08:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/jsx/</loc>
+    <loc>https://example.org/tags/jsx/</loc>
     <lastmod>2026-10-02T19:08:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/my-resume/</loc>
+    <loc>https://example.org/posts/my-resume/</loc>
     <lastmod>2026-10-02T19:08:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://example.org/posts/</loc>
     <lastmod>2026-10-02T19:08:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/react/</loc>
+    <loc>https://example.org/tags/react/</loc>
     <lastmod>2026-10-02T19:08:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://example.org/tags/</loc>
     <lastmod>2026-10-02T19:08:29+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/camosun/</loc>
+    <loc>https://example.org/tags/camosun/</loc>
     <lastmod>2026-10-02T19:01:33+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/hugo/</loc>
+    <loc>https://example.org/tags/hugo/</loc>
     <lastmod>2026-10-02T19:01:33+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/ics-211/</loc>
+    <loc>https://example.org/tags/ics-211/</loc>
     <lastmod>2026-10-02T19:01:33+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/learning/</loc>
+    <loc>https://example.org/tags/learning/</loc>
     <lastmod>2026-10-02T19:01:33+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/my-first-post/</loc>
+    <loc>https://example.org/posts/my-first-post/</loc>
     <lastmod>2026-10-02T19:01:33+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://example.org/categories/</loc>
   </url>
 </urlset>

@@ -1,0 +1,17 @@
+{
+    "student": {
+        "name": {
+            "firstName": "Mariah",
+            "lastName": "Malczewska"
+        },
+        "email": "mariahMalcz@gmail.com",
+        "courses": [ 
+            {"id": 211, "title": "web"}, 
+            {"id": 212, "title": "database"},
+            {"id": 214, "title": "c++"},
+            {"id": 226, "title": "networking"},
+            {"id": 228, "title": "Ethics"},
+            {"id": 170, "title": "English"}
+        ]
+    }
+}

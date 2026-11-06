@@ -16,27 +16,71 @@
   <body>
     <div id="root"></div>
     <script type="text/babel">
-      import { createRoot } from 'react-dom/client';
+    import { createRoot } from 'react-dom/client';
+    // import the Styled Components library from the CDN
+    import styled from 'https://esm.sh/styled-components@6/?dev';
 
-      const App = () => {
-        const courses = [
-          { id: 0, code: 211, title: 'Web Apps' },
-          { id: 1, code: 212, title: 'Database' },
-          { id: 2, code: 228, title: 'Ethics' }
-        ];
+    const StyledHeading = styled.h1`
+      font-size: 30pt;
+      color: navy;
+    `;
 
-        return courses.map( ( props ) =>
-        <Course key={props.id} id={props.id} code={props.code} title={props.title} />
-      )
+    const Header = () => (
+      <StyledHeading>
+        ICS 211 Web Apps
+      </StyledHeading>
+    );
+    
+    const StyledPar = styled.p`
+      color: ${props => props.color};
+    `;
 
-      }
+    // Object destructured props also works.
+    // but doesn't save you typing
+    // const StyledP = styled.p`
+    //   color: ${ ({ color }) => color};
+    // `;
 
-      const Course = ({ id, code, title }) => (
-        <p id={id}>{code} {title}</p>
-      )
+    // Original Lab Component
+    // const Lab = ({ id, topic }) => (
+    //   <p id={id}>
+    //     You did a lab on {topic} this semester.
+    //   </p>
+    // );
 
-      // change null to your parent React element
-      createRoot(document.getElementById('root')).render( <App /> );
+    const Lab = ({ id, topic, color }) => (
+      <StyledPar color={color} id={id}>
+        You did a lab on {topic} this semester.
+      </StyledPar>
+    );
+
+    const App = ({ className }) => {
+      const labs = [
+        { id: 0, topic: 'Connecting to Your VM in VSC and JS Review Quiz', color: 'blue' },
+        { id: 1, topic: 'SOP, AJAX, XSS, and SQLi', color: 'green' },
+        { id: 2, topic: 'Creating a Static HTML Page by Manipulating the DOM', color: 'red' }
+      ];
+      
+      return (
+        <div className={className}>
+          <Header />
+          {labs.map(lab =>
+            <Lab key={lab.id} id={lab.id} topic={lab.topic} color={lab.color} />
+          )}
+        </div>
+      );
+    }
+
+    const StyledApp = styled(App)`
+      border: 5px solid;
+      padding: 10px;
+    `;
+
+
+    // change null to your parent React element
+    createRoot(document.getElementById('root')).render(
+      <StyledApp />
+    );
     </script>
   </body>
 </html>
